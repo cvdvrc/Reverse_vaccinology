@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+# Aminata NDIAYE
+# CVD - VCR - IPD
+# 06/2025
+# Tested with python3
+# Version 1.0.0
 
 import argparse
 from Bio import Entrez, SeqIO
