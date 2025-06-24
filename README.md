@@ -1,4 +1,4 @@
-#Bionformatics pipeline for reverse vaccinology
+# Bionformatics pipeline for reverse vaccinology
 ## Download sequences: 
 > get_sequences. py
 
