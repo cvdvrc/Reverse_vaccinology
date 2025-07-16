@@ -17,8 +17,9 @@ WORKDIR /IApred
 
 #RUN pip install -r requirements.txt --break-system-packages
 RUN pip install numpy==1.26.4 biopython scikit-learn==1.5.2 joblib imbalanced-learn==0.13.0 scipy seaborn==0.13.2 matplotlib --break-system-packages
-#Compiling C-programs
-#RUN make && make install
+RUN ln -s /IApred/IApred.py /usr/bin/IApred
+RUN cp /IApred/protein_motifs.txt /usr/bin/protein_motifs.txt
 
-#Display help information
-#RUN cd-hit --help
+RUN sed -i 's,motifs = load_motifs('\''protein_motifs.txt'\''),motifs = load_motifs('\''/IApred/protein_motifs.txt'\''),' /IApred/functions.py
+RUN sed -i 's,models_folder = "models",models_folder = "/IApred/models",' /IApred/IApred.py
+

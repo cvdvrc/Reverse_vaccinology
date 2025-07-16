@@ -1,0 +1,6 @@
+{
+  "input_fasta": "path/to/genome.fasta",
+  "identity": 0.9,
+  "allele_file": "path/to/genome.fasta"
+}
+

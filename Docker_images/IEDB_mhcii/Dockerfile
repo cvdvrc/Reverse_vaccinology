@@ -15,6 +15,13 @@ RUN apt-get update && apt-get install -yf git python3-pip wget tcsh gawk perl py
 RUN wget https://downloads.iedb.org/tools/mhcii/LATEST/IEDB_MHC_II-3.1.12.tar.gz
 RUN tar --extract --file=IEDB_MHC_II-3.1.12.tar.gz --gzip --verbose
 WORKDIR mhc_ii
+RUN sed -i "s,    test(),#    test()," configure.py
 RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN ./configure.py
-RUN true
+RUN ln -s /mhc_ii/mhc_II_binding.py /usr/bin/mhc_II_binding
+#RUN true
+RUN sed -i 's,my \$PLATFORM = \$ENV{'\''NetMHCIIpanPLAT'\''},my \$PLATFORM = "/mhc_ii/methods/netmhciipan-4.1-executable/netmhciipan_4_1_executable/Linux_x86_64/",' \
+    /mhc_ii/methods/netmhciipan-4.1-executable/netmhciipan_4_1_executable/NetMHCIIpan-4.1.pl
+RUN dpkg --add-architecture amd64
+RUN apt update
+RUN apt install -yf binutils:amd64
