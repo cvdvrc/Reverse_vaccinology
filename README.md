@@ -1,22 +1,11 @@
 # Bionformatics pipeline for reverse vaccinology
 ## Download sequences: 
-> get_sequences.py
+> get_sequences. py
 
 ## Clusterisation: 
-> cd-hit
+> cd-hit -i proteomes_ncbi.fasta -o cd_hit_proteome_clustered.fasta -c 0.90 -n 5
 
 ## Predictions
 ### Subcellular localization
-> phobius 
-
 ### Allergenicity
-> IApred
-
-### MHCI epitope
-> iedb_mhcI
-
-### MHCII epitope
-> iedb_mhcII
-
-### Bcells epitope
-> iedb_bcell
+> python3 IApred.py cd_hit_proteome_clustered.fasta
